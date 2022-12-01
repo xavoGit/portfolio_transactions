@@ -30,7 +30,7 @@ pipeline {
 	stage('Docker Build') {
 	  steps {
 		script {
-		  app = docker.build("portfolio_wallet:${TAG}")
+		  app = docker.build("portfolio_transactions:${TAG}")
         }
       }
     }
