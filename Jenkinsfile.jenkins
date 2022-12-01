@@ -23,7 +23,7 @@ pipeline {
         withMaven {
           sh "echo 'building from: ' \$(hostname)"
           sh "mvn clean package -Dmaven.test.failure.ignore=true"
-          sh "mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)"
+          sh "mkdir -p target/dependency && (cd target/dependency; jar -xf ../*SNAPSHOT.jar)"
         }
       }
 	}    
