@@ -18,19 +18,19 @@ import com.xavo.finance.transactions.entities.Service;
 @Slf4j
 @RestController
 @RequestMapping ("api/v1/services")
-public record ServiceController (ServiceService customerService) {
+public record ServiceController (ServiceService serviceservice) {
 
 	@PostMapping
 	public void registerCustomer(@RequestBody ServiceRegistrationRequest serviceRegistrationRequest) {
 		log.info("new service registration {}", serviceRegistrationRequest);
-		customerService.registerService(serviceRegistrationRequest);
+		serviceservice.registerService(serviceRegistrationRequest);
 	}
 
 	@GetMapping
 	public ResponseEntity<List<Service>> getAllServices() {
 		List<Service> banks = new ArrayList<Service>();
 
-		customerService.getAllAccounts().forEach(banks::add);
+		serviceservice.getAllAccounts().forEach(banks::add);
 		if (banks.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
